@@ -1,53 +1,26 @@
-package com.sgic.internal.defecttracker.project.entities;
+package com.sgic.internal.defecttracker.project.controller.dto;
 
-import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDate;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
-@Entity
-@Table(schema = "defectservices", name = "project")
-public class Project implements Serializable {
+@Component
+public class ProjectDto {
 	
-	LocalDate todayDate = LocalDate.now();
-	java.sql.Date currentDay = java.sql.Date.valueOf(todayDate);
-	private static final long serialVersionUID = 1L;
-
-	@Id
 	private String projectId;
-
-	//private String abbr;
 
 	private String projectName;
 
 	private String type;
 
-	@DateTimeFormat(iso=ISO.DATE)
-	private Date startDate = currentDay;
+	private Date startDate;
 
-	@DateTimeFormat(iso=ISO.DATE)
-	private Date endDate = currentDay;
+	private Date endDate ;
 
 	private Long duration;
 
 	private String status;
 
 	private String configId;
-
-	
-//	public String getAbbr() {
-//		return abbr;
-//	}
-//
-//	public void setAbbr(String abbr) {
-//		this.abbr = abbr;
-//	}
 
 	public String getProjectId() {
 		return projectId;
@@ -78,7 +51,7 @@ public class Project implements Serializable {
 	}
 
 	public void setStartDate(Date startDate) {
-		this.startDate = currentDay;
+		this.startDate = startDate;
 	}
 
 	public Date getEndDate() {
@@ -86,12 +59,8 @@ public class Project implements Serializable {
 	}
 
 	public void setEndDate(Date endDate) {
-//		LocalDate ld = currentDay.toLocalDate();
-//		LocalDate monthLater = ld.plusMonths(duration);
-//		java.sql.Date sqlEndDate = java.sql.Date.valueOf(monthLater);
-		this.endDate = currentDay;
+		this.endDate = endDate;
 	}
-
 
 	public Long getDuration() {
 		return duration;
@@ -116,5 +85,21 @@ public class Project implements Serializable {
 	public void setConfigId(String configId) {
 		this.configId = configId;
 	}
+
+
+
+//	public ProjectDto (String projectId, String projectName, String type, Date startDate, Date endDate,
+//				Long duration, String status, String configId) {
+//		super();
+//		this.projectId = projectId;
+//		this.projectName = projectName;
+//		this.type = type;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//		this.duration = duration;
+//		this.status = status;
+//		this.configId = configId;
+//	}
+
 
 }
